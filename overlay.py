@@ -1,20 +1,6 @@
 # This code is provided as is. Use at your own risk.
 
-# How to use with OBS Studio
-# --------------------------
-# 0. As with all keyboard overlays, BE CAREFUL not to type any sensitive information while the overlay is running.
-# Set Up
-# 1. Download this file and save it as overlay.py. Make sure you have "file name extensions" turned on in Windows.
-# 2. Take a screenshot of your key bindings in game and save it AS A PNG FILE. Rename it to bindings.png and save it to the same folder as overlay.py.
-# 3. Download the image called magic.png at https://postimg.cc/V018VWLz and save it to the same folder as overlay.py.
-# 4. Install the latest Python 3.9.
-# 5. Open Command Prompt. Run the command "pip3 install numpy opencv-python pillow pynput" (without quotes) and answer Y to the prompts. This will install dependencies.
-# Running the Overlay
-# 6. Run a new Command Prompt AS ADMINISTRATOR*. Step by step: press the Windows key, search for Command Prompt, right click it, click Run as administrator.
-# 7. In the admin Command Prompt, change directory (cd) to the folder that contains overlay.py. For example, if I saved the files to Downloads, I would run the command "cd C:\Users\%USERNAME%\Downloads" (without quotes).
-# 8. In the admin Command Prompt, run the command "python3 overlay.py" (without quotes).
-# 9. Add the overlay window as a new source in OBS. Use the chroma key filter to remove the green. Resize it to your liking.
-# *Command prompt must be run as administrator to read your key input while you're in the game.
+
 
 import tkinter as tk
 from datetime import datetime, timedelta
