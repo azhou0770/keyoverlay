@@ -20,6 +20,8 @@ HOLD_MS_THRESHOLD = 75
 # RESOLUTION:
 ROW_WIDTH_PX = 410
 HEIGHT = 900
+##
+OUTPUT_OPTION = 1 
 
 class LabelRow:
     """
@@ -109,7 +111,6 @@ class LabelGrid:
     def __init__(self):
         """Initialize an empty LabelGrid."""
         self.last_active = 0
-
         self.rows = []
 
     def add_label(self, root, img, now, key):
@@ -124,18 +125,18 @@ class LabelGrid:
         if len(self.rows) == 0 or \
            now - self.last_active > timedelta(milliseconds=NEW_ROW_MILLIS):
             self.rows.append(LabelRow(now))
-        label_row = self.rows[-1]
+        last_label_row = self.rows[-1]
         max_labels = ROW_WIDTH_PX//(ICON_SIZE + (DISTANCE_BETWEEN_LABELS - ICON_SIZE))
-        if len(label_row.labels) == max_labels:
+        if len(last_label_row.labels) == max_labels:
             self.rows.append(LabelRow(now))
-            label_row = self.rows[-1]
+            last_label_row = self.rows[-1]
 
         if not self.last_active:
             label = tk.Label(root, image=img, borderwidth=0, compound='top', font = FONT)
         else:
             time_diff_ms = int((now - self.last_active).total_seconds() * 1000)
             label = tk.Label(root, image=img, borderwidth=0, text=f"{time_diff_ms}", compound='top', font = FONT, bg = '#000000', fg = '#FFFF00')
-        label_row.add_label(label, now, key)
+        last_label_row.add_label(label, now, key)
         self.last_active = now
 
     def add_label_release(self, root, img, now, key):
