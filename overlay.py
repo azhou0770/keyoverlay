@@ -1,7 +1,3 @@
-# This code is provided as is. Use at your own risk.
-
-
-
 import tkinter as tk
 from datetime import datetime, timedelta
 from PIL import Image, ImageTk, ImageDraw
@@ -57,15 +53,14 @@ class LabelRow:
         # if self.prev_key and key != self.prev_key:
         #     current_fg_color = self.prev_label.cget('fg')
         #     if (current_fg_color == 'white'):
-        #         self.prev_label.config(fg='#FFFF00')s
+        #         self.prev_label.config(fg='#FFFF00')
 
         if self.prev_key and key == self.prev_key and now - self.last_active < timedelta(milliseconds=HOLD_MS_THRESHOLD):
             self.prev_label.config(fg='blue')
             # we end up not updating the self.labels list to reflect the change when modifying the prev_label
-            # keep in this in mind
         else:
             time_diff_ms = int((now - self.last_active).total_seconds() * 1000)
-            label_text = f"{time_diff_ms}ms" # Probably not necessary but will include for information
+            label_text = f"{time_diff_ms}ms" # Probably not necessary
             self.labels.append((label, now, label_text, time_diff_ms))
             self.prev_label = label
             self.prev_key = key
@@ -98,8 +93,8 @@ class LabelRow:
 
             # if xpos > wraparound:
             #     print("this shouldn't happpen")
-                # y += ROW_HEIGHT_PX
-                # xpos = 0
+            #     y += ROW_HEIGHT_PX
+            #     xpos = 0
 
         return y + ROW_HEIGHT_PX
 
@@ -156,7 +151,6 @@ class LabelGrid:
         if len(self.rows) == 0 or \
            now - self.last_active > timedelta(milliseconds=NEW_ROW_MILLIS):
             self.rows.append(LabelRow(now))
-            # print("weirdge!")
         label_row = self.rows[-1]
         max_labels = ROW_WIDTH_PX//(ICON_SIZE + (DISTANCE_BETWEEN_LABELS - ICON_SIZE))
         if len(label_row.labels) == max_labels:
@@ -199,7 +193,6 @@ def find_origin():
     magic = cv2.imread(MAGIC_FILE)
     bindings = cv2.imread(BINDINGS_FILE)
     res = cv2.matchTemplate(bindings, magic, cv2.TM_SQDIFF)
-    print("copy arrow tester")
     return np.unravel_index(res.argmin(), res.shape)
 
 keys = {}
@@ -439,13 +432,12 @@ if __name__ == "__main__":
             key: The released key.
         """
         kid = keyid(key)
-        # print(kid)
 
         if not hasattr(key, 'name') and not hasattr(key, 'vk'):
             return
 
         if kid is None or kid not in tk_keys:
-            print(f"Key {key} with keyid {kid} is not in tk_keys")
+            # print(f"Key {key} with keyid {kid} is not in tk_keys")
             return
 
         now = datetime.now()

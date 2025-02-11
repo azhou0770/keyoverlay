@@ -17,14 +17,13 @@ As with all keyboard overlays, **be cautious** not to type sensitive information
 ### 📌 How to Use with OBS Studio
 
 #### **1️⃣ Setup**
-1. **Download & Save**  
-   - Save the script as `overlay.py`.  
-   - Ensure **"File Name Extensions"** are enabled in Windows.  
+1. **Download & Extract**    
 
 2. **Capture Key Bindings:**  
    - Take a screenshot of your **key bindings** in-game.  
    - **Resolution Requirement:** `1366x768`  
-   - **File Format:** PNG (Rename it to `bindings.png`).  
+   - **File Format:** PNG (Rename it to `bindings.png`).
+   - BINDINGS_FILE in overlay.py is mapped to the name of your keybindings.
    - Save it in the same folder as `overlay.py`.  
 
 3. **Install Python:**  
