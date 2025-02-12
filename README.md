@@ -4,6 +4,9 @@
 **MapleStory Keyboard Overlay** is a customizable on-screen keyboard display.
 It helps visualize keybindings, track skill usage, and enhance gameplay efficiency.  
 
+## Demo
+![Demo](https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdGptcDBsemJlZmQzbWFndGVoNmt6OWl4YmMya3RpYnJ1cGF5ZmgyaCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xbLfDwJortkei5pvzr/giphy.gif)
+
 ## Features
 - **Skill Icons Display** – Matches your in-game key bindings.  
 - **Transparent Overlay** – View key presses without obstructing gameplay (optimized for OBS).  
