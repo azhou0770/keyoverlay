@@ -111,17 +111,25 @@ class LabelGrid:
     def __init__(self):
         """Initialize an empty LabelGrid."""
         self.last_active = 0
+        self.prev_label = None
+        self.prev_key = None
         self.rows = []
 
     def add_label(self, root, img, now, key):
         """
-        Add a label to the grid.
+        Add label to the appropriate row/Skip adding a label depending on settings.
 
         Args:
             root: The Tkinter root window.
             img: The image to be displayed in the label.
             now (datetime): The current timestamp.
         """
+
+        if (key == self.prev_key) and (hasattr(key, 'name') and key.name in ['left', 'right', 'up', 'down']):
+            return
+        elif (key == self.prev_key):
+            
+
         if len(self.rows) == 0 or \
            now - self.last_active > timedelta(milliseconds=NEW_ROW_MILLIS):
             self.rows.append(LabelRow(now))
@@ -131,6 +139,8 @@ class LabelGrid:
             self.rows.append(LabelRow(now))
             last_label_row = self.rows[-1]
 
+
+        
         if not self.last_active:
             label = tk.Label(root, image=img, borderwidth=0, compound='top', font = FONT)
         else:
